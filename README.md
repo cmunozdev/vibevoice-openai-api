@@ -6,16 +6,21 @@ OpenAI-compatible TTS API wrapping [VibeVoice-Realtime-0.5B](https://huggingface
 
 > **Note**: If both this wrapper and Open WebUI runs in a container, use `host.docker.internal:8880` instead of `localhost`.
 
+[![Demo: VibeVoice-Realtime OpenAI API-compatible Text-to-Speech Server for Open WebUI](https://i3.ytimg.com/vi/12VwN-AM1os/maxresdefault.jpg)](https://youtu.be/12VwN-AM1os)
+
+> 👆🏻 📹 YouTube video demonstration of "Mike" vocal used on Open WebUI. 📹 👆🏻
+
 ## Features
 
-- 🎙️ **OpenAI API Compatible**
+- ✅ **OpenAI API Compatible**
   - `/v1/audio/speech`
   - `/v1/audio/voices`
   - `/v1/audio/models`
-- ⚡ **Real-time Performance** - ~1x RTF on RTX 3060
+  - Can be used on many OpenAI API-compatible drop-in endpoint.
+- ⚡ **Real-time Performance** - **~1x RTF** (Real-Time Factor) on an **RTX 3060**.
+- 🚀 **GPU Accelerated** - Requiring **only ~2GB of VRAM**, CUDA with Flash Attention (Docker) or SDPA (venv)
 - 🔊 **7 Voices** - With OpenAI voice name aliases (alloy, nova, etc.)
 - 🎵 **Multiple Formats** - MP3, WAV, OPUS, FLAC, AAC, PCM
-- 🚀 **GPU Accelerated** - CUDA with Flash Attention (Docker) or SDPA (venv)
 - 📦 **Self-contained** - Models download to `./models/` on first run
 
 ## Requirements
