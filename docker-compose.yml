@@ -1,0 +1,17 @@
+services:
+  vibevoice-realtime-openai-api:
+    build: .
+    image: vibevoice-realtime-openai-api
+    container_name: vibevoice-realtime-openai-api
+    ports:
+      - "8880:8880"
+    volumes:
+      - ./models:/home/ubuntu/app/models
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    restart: unless-stopped

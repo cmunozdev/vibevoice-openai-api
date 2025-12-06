@@ -1,0 +1,30 @@
+# Models and cache (folder committed, contents ignored)
+models/*
+!models/.gitkeep
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temp and test files
+*.log
+*.tmp
+*.mp3
+*.wav
+*.zip
+
+# Prebuilt wheels (flash-attn downloaded from external URL)
+prebuilt-wheels/flash_attn*.whl
