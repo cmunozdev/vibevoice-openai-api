@@ -126,7 +126,7 @@ First run downloads models (~2GB) and voice presets (~22MB) to `./models/`.
 | API Key | `sk-unused` |
 | TTS Model | `tts-1-hd` |
 | TTS Voice | `Carter`, `Emma`, `alloy`, `nova`, etc. |
-| Response splitting | `None` (recommended for low-end GPU) |
+| Response splitting | `Paragraph` (recommended for low-end GPU) |
 
 > **Note**: If both this wrapper and Open WebUI runs in a container, use `host.docker.internal:8880` instead of `localhost`.
 
