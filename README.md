@@ -135,9 +135,11 @@ First run downloads models (~2GB) and voice presets (~22MB) to `./models/`.
 
 You can use either OpenAI names or VibeVoice names in the API.
 
-### Custom Voices
+### Custom Voices / Additional Voices
 
-Custom voices can be added by placing `.pt` files in `./models/voices/`. The server scans this directory on startup.
+If there's any updated voices, you can download them from [here](https://github.com/microsoft/VibeVoice/tree/main/demo/voices/streaming_model).
+
+You can add custom / additional voices by placing `.pt` files in `./models/voices/`. The server scans this directory on startup.
 
 > **Note**: The Realtime 0.5B model does not provide public voice cloning tools. For custom voice creation, [contact Microsoft](https://github.com/microsoft/VibeVoice). Microsoft plans to expand available speakers in future updates.
 
