@@ -2,7 +2,9 @@
 
 OpenAI-compatible TTS API wrapping [VibeVoice-Realtime-0.5B](https://huggingface.co/microsoft/VibeVoice-Realtime-0.5B) for Open WebUI.
 
-![image](assets/openwebui.png)
+![image](assets/openwebui_settings.png)
+
+> **Note**: If both this wrapper and Open WebUI runs in a container, use `host.docker.internal:8880` (Docker) or `host.containers.internal:8880` (Podman) instead of `localhost`.
 
 ## Features
 
@@ -46,7 +48,7 @@ docker run --gpus all -p 8880:8880 \
   vibevoice-realtime-openai-api
 ```
 
-**Please be patient** and check your network monitor, because on first run it downloads models 📦 (~2GB) and voice presets 🎤 (~22MB) from huggingface and Microsoft VibeVoice repositories to `./models/`. It's not stuck, it's just downloading.
+> ⚠️ **Please be patient** and check your network monitor, because on first run it downloads models 📦 (~2GB) and voice presets 🎤 (~22MB) from huggingface and Microsoft VibeVoice repositories to `./models/`. It's not stuck, it's just downloading.
 
 ---
 
@@ -120,6 +122,8 @@ First run downloads models (~2GB) and voice presets (~22MB) to `./models/`.
 | TTS Model | `tts-1-hd` |
 | TTS Voice | `Carter`, `Emma`, `alloy`, `nova`, etc. |
 | Response splitting | `None` (recommended for low-end GPU) |
+
+> **Note**: If both this wrapper and Open WebUI runs in a container, use `host.docker.internal:8880` (Docker) or `host.containers.internal:8880` (Podman) instead of `localhost`.
 
 ## Available Voices
 
