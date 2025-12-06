@@ -70,8 +70,8 @@ uv venv .venv --python 3.13 --seed
 # Install dependencies
 uv pip install -r requirements.txt
 
-# Run (Flash Attention and APEX are Linux-only, uses SDPA fallback on Windows)
-$env:OPTIMIZE_FOR_SPEED=1; python vibevoice_realtime_openai_api.py --port 8880
+# Run
+python vibevoice_realtime_openai_api.py --port 8880
 ```
 
 ### Linux
