@@ -46,7 +46,7 @@ docker run --gpus all -p 8880:8880 \
   vibevoice-realtime-openai-api
 ```
 
-First run downloads models (~2GB) and voice presets (~22MB) to `./models/`.
+**Please be patient** and check your network monitor, because on first run it downloads models 📦 (~2GB) and voice presets 🎤 (~22MB) from huggingface and Microsoft VibeVoice repositories to `./models/`.
 
 ---
 
