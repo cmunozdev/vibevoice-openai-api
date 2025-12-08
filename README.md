@@ -80,8 +80,8 @@ uv venv .venv --python 3.13 --seed
 # Install dependencies
 uv pip install -r requirements.txt
 
-# Run
-python vibevoice_realtime_openai_api.py --port 8880
+# Run (optional: set CFG_SCALE for expressiveness, 0.0-3.0)
+$env:CFG_SCALE="1.25"; python vibevoice_realtime_openai_api.py --port 8880
 ```
 
 ### Linux
@@ -110,8 +110,8 @@ uv pip install ./prebuilt-wheels/flash_attn-*.whl
 # Install prebuilt APEX
 uv pip install ./prebuilt-wheels/apex-*.whl
 
-# Run
-OPTIMIZE_FOR_SPEED=1 python vibevoice_realtime_openai_api.py --port 8880
+# Run (optional: set CFG_SCALE for expressiveness, 0.0-3.0)
+CFG_SCALE=1.25 OPTIMIZE_FOR_SPEED=1 python vibevoice_realtime_openai_api.py --port 8880
 ```
 
 First run downloads models (~2GB) and voice presets (~22MB) to `./models/`.
