@@ -63,6 +63,7 @@ RUN chmod +x entrypoint.sh
 
 # App environment
 ENV OPTIMIZE_FOR_SPEED=1
+ENV CFG_SCALE=1.25
 ENV MODELS_DIR=/home/ubuntu/app/models
 
 # Models volume
