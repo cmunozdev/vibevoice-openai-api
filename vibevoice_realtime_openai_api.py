@@ -49,6 +49,9 @@ from vibevoice.processor.vibevoice_streaming_processor import (
 SAMPLE_RATE = 24000
 DEFAULT_MODEL_PATH = "microsoft/VibeVoice-Realtime-0.5B"
 
+# CFG scale for generation (configurable via env var)
+CFG_SCALE = float(os.environ.get("CFG_SCALE", "1.5"))
+
 # Voices directory
 VOICES_DIR = MODELS_DIR / "voices"
 
@@ -560,6 +563,7 @@ async def create_speech(request: TTSRequest):
         audio = tts_service.generate_speech(
             text=request.input,
             voice=request.voice,
+            cfg_scale=CFG_SCALE,
         )
 
         # Convert to requested format

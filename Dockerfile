@@ -40,10 +40,9 @@ ENV LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
 # Install Python 3.13
 RUN /home/ubuntu/.local/bin/uv python install 3.13
 
-# Copy files
+# Copy files (Python file is mounted via docker-compose volume)
 COPY --chown=ubuntu:ubuntu requirements.txt .
 COPY --chown=ubuntu:ubuntu prebuilt-wheels/apex-*.whl ./prebuilt-wheels/
-COPY --chown=ubuntu:ubuntu vibevoice_realtime_openai_api.py .
 COPY --chown=ubuntu:ubuntu entrypoint.sh .
 
 # Download flash-attn from prebuild repo (keep original filename with version)
