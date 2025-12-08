@@ -9,7 +9,7 @@ services:
       - ./models:/home/ubuntu/app/models
       - ./vibevoice_realtime_openai_api.py:/home/ubuntu/app/vibevoice_realtime_openai_api.py:ro
     environment:
-      - CFG_SCALE=1.5  # Classifier-Free Guidance scale (0.0-3.0, higher = more expressive)
+      - CFG_SCALE=1.25  # (0.0 - 3.0, higher = more expressive)
     deploy:
       resources:
         reservations:
