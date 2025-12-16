@@ -1,11 +1,9 @@
-version: "3.9"
-
 services:
-  vibevoice:
+  vibevoice-realtime-openai-api:
     build:
       context: .
-      dockerfile: Dockerfile
-    container_name: vibevoice-cpu
+      dockerfile: Dockerfile.cpu
+    container_name: vibevoice-realtime-openai-api
     ports:
       - "8880:8880"
     environment:
