@@ -11,4 +11,5 @@ services:
     environment:
       - CFG_SCALE=1.25  # (0.0 - 3.0, higher = more expressive)
       - VIBEVOICE_DEVICE=cpu
+      - OPTIMIZE_FOR_SPEED=0
     restart: unless-stopped
