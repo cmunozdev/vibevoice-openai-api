@@ -1,10 +1,14 @@
-# Base image - Ubuntu 24.04 sin CUDA para CPU
+# Base image - Ubuntu 24.04
 FROM ubuntu:24.04
 
-# Install system packages
+# Install system packages + deadsnakes PPA for Python 3.13
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y \
-    sudo git curl ffmpeg ca-certificates python3.13 python3.13-venv python3-pip && \
+    sudo git curl ffmpeg ca-certificates software-properties-common && \
+    add-apt-repository ppa:deadsnakes/ppa -y && \
+    apt-get update && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y \
+    python3.13 python3.13-venv python3.13-dev python3-pip && \
     rm -rf /var/lib/apt/lists/*
 
 # Create ubuntu user (UID/GID 1000 for volume compatibility)
@@ -25,20 +29,28 @@ RUN curl -LsSf https://astral.sh/uv/install.sh | sh
 # Set ENV for non-interactive CMD
 ENV PATH=/home/ubuntu/.local/bin:$PATH
 
-# Install Python 3.13
-RUN /home/ubuntu/.local/bin/uv python install 3.13
-
 # Copy files
 COPY --chown=ubuntu:ubuntu requirements.txt .
 COPY --chown=ubuntu:ubuntu vibevoice_realtime_openai_api.py .
 COPY --chown=ubuntu:ubuntu entrypoint.sh .
 
-# Create venv and install deps (CPU version - sin flash-attn ni apex)
+# Create venv with Python 3.13 and install deps (CPU version)
 RUN /home/ubuntu/.local/bin/uv venv .venv --python 3.13 --seed && \
     . .venv/bin/activate && \
-    # Instalar solo las dependencias necesarias para CPU
-    /home/ubuntu/.local/bin/uv pip install torch --index-url https://download.pytorch.org/whl/cpu && \
-    /home/ubuntu/.local/bin/uv pip install fastapi uvicorn transformers soundfile scipy librosa pydantic && \
+    # Instalar PyTorch CPU version
+    /home/ubuntu/.local/bin/uv pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu && \
+    # Instalar dependencias básicas
+    /home/ubuntu/.local/bin/uv pip install \
+        fastapi \
+        uvicorn[standard] \
+        transformers \
+        accelerate \
+        soundfile \
+        scipy \
+        librosa \
+        pydantic \
+        python-multipart \
+        requests && \
     /home/ubuntu/.local/bin/uv cache clean
 
 # Make entrypoint executable
